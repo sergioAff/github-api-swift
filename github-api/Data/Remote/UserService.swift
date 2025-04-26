@@ -4,11 +4,11 @@ actor UserService {
     private let baseURL = "https://api.github.com/users/"
     private let session: URLSession
     
-    init(session: URLSession = .shared) {
+    init() {
         let config = URLSessionConfiguration.default
-        config.timeoutIntervalForRequest = 15
         config.waitsForConnectivity = true
-        self.session = session
+        config.timeoutIntervalForRequest = 15
+        self.session = URLSession(configuration: config)
     }
     
     func getUser(name: String) async throws -> User {

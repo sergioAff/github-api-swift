@@ -2,6 +2,7 @@ import SwiftUI
 
 struct WebsiteSection: View {
     let blog: String?
+    let login:String
     
     var body: some View{
         VStack(alignment: .leading, spacing: 8) {
@@ -16,7 +17,7 @@ struct WebsiteSection: View {
                 Spacer()
             }
             
-            Link(destination: URL(string: blog ?? "") ?? URL(string: "https://github.com")!) {
+            Link(destination: URL(string: blog ?? "") ?? URL(string: "https://github.com/\(login)")!) {
                 Text(blog ?? "")
                     .font(.subheadline)
                     .foregroundStyle(.blue)

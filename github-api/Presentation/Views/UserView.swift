@@ -8,22 +8,17 @@ struct UserView: View {
         ScrollView {
             VStack(spacing: 24) {
                 ProfileHeader(user: user)
-                Divider()
-                    .padding(.horizontal)
                 
-                StatsSection(user: user)
-                
-                Divider()
-                    .padding(.horizontal)
+                StatsSection(user: user).padding(.horizontal,10)
                 
                 LocationSection(location: user.location)
                 
                 BioSection(bio: user.bio)
                 
-                    WebsiteSection(blog: user.blog)
+                WebsiteSection(blog: user.blog, login: user.login)
                 
                 
-                ContactButton()
+                ContactButton(email: user.email, profileURL: URL(string: "https://github.com/\(user.login)")!)
             }
             .padding()
             .animation(.spring(response: 0.5, dampingFraction: 0.8), value: isAnimating)
